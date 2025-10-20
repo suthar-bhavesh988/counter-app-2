@@ -14,14 +14,12 @@ const shopify = shopifyApp({
   scopes: process.env.SCOPES?.split(","),
   appUrl: process.env.SHOPIFY_APP_URL || "",
   authPathPrefix: "/auth",
-  sessionStorage: new PrismaSessionStorage(prisma),
-  // distribution: AppDistribution.AppStore,
-  // ...(process.env.SHOP_CUSTOM_DOMAIN
-  //   ? { customShopDomains: [process.env.SHOP_CUSTOM_DOMAIN] }
-  //   : {}),
+  // sessionStorage: new PrismaSessionStorage(prisma),
+  distribution: AppDistribution.AppStore,
+  ...(process.env.SHOP_CUSTOM_DOMAIN
+    ? { customShopDomains: [process.env.SHOP_CUSTOM_DOMAIN] }
+    : {}),
 });
-
-console.log(shopify);
 
 export default shopify;
 export const apiVersion = ApiVersion.October25;
